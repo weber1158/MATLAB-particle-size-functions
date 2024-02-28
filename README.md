@@ -1,4 +1,4 @@
-## MATLAB Functions for Ice Core Dust Size Analyses
+## MATLAB Particle Size Functions
 <large> Copyright 2024 - Austin M. Weber </large> 
 
 ### Description

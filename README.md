@@ -67,7 +67,7 @@ If the metric unit is not specified, the function will convert from φ units to 
 ### grainsizeterm.m
 Wentworth Scale grain size classification
 
-**Description** The `grainsizeterm` function classifies a vector of particle diameters (in phi units) to their corresponding morphological categories based on the Wentworth Scale. For example:
+**Description** The `grainsizeterm()` function classifies a vector of particle diameters (in phi units) to their corresponding morphological categories based on the Wentworth Scale. For example:
 
 ```matlab
 phis = [1 3 10];
@@ -80,7 +80,7 @@ terms =
 ```
 ---
 ### diameters.mat
-MATLAB binary file containing two variables: `diameters_microns` and `diameters_phi`. You can lod the variables into MATLAB with the `load()` function:
+MATLAB binary file containing two variables: `diameters_microns` and `diameters_phi`. You can load the variables into MATLAB with the `load()` function:
 
 ```matlab
 load diameters.mat

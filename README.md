@@ -20,10 +20,10 @@ where `dN` is a vector of particles size concentrations, `Dupper` is the upper l
 concentration = 500; 
 lower_diameter = 1.0; % in microns
 upper_diameter = 2.0; % in microns
-lognormconcention = normconc(concentration,...
+lognormconc = normconc(concentration,...
     upper_diameter,lower_diameter)
 
-lognormconcentration =
+lognormconc =
     1660.96
 ```
 

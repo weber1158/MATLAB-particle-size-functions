@@ -71,7 +71,7 @@ Wentworth Scale grain size classification
 
 ```matlab
 phis = [1 3 10];
-terms = grainsizeterms(phis)
+terms = grainsizeterm(phis)
 
 terms = 
     1x3 categorical array

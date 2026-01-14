@@ -2,7 +2,30 @@
 <large> Copyright 2024 - Austin M. Weber </large> 
 
 ### Description
-This repository contains 5 files (4 functions written for MATLAB and 1 binary file) for evaluating log-normal particle concentrations, converting particle diameters sizes in metric units to phi "φ" units (and vice versa), and classifying particles sizes according to the Wentworth Scale (Wentworth, 1922).
+This repository contains 6 files (5 functions written for MATLAB and 1 binary file) for calculating particle mass concentrations in snow, evaluating log-normal particle concentrations, converting particle diameters sizes in metric units to phi "φ" units (and vice versa), and classifying particles sizes according to the Wentworth Scale (Wentworth, 1922).
+
+---
+### counts2mass.m
+Particle concentration to mass concentration.
+
+```matlab
+Cmass = counts2mass(counts,sizes,varargin)
+```
+
+**Description** - Converts an array of particle concentrations (in units of counts/mL) to units of µg/g of snow (equivalent to ppm). Assumes that the particles can be approximated as spheres, and that the particles have a mean density of 2.66 g/cm<sup>3</sup> and a snow density of 0.4 g/cm<sup>3</sup>. The latter two assumptions can be modified using the name-value arguments `ParticleDensity` and `SnowDensity`, respectively. The `sizes` input contains the diameters of the particles in each column of `counts` in units of micrometers (µm).
+
+**Example** - Calculate the mass concentrations for five samples (5 rows) across four particle sizes (4 columns). Assume a particle density of 5.26 g/cm<sup>3</sup>, which is the density of the mineral hematite.
+
+```matlab
+counts  = [500 100 20  1;...
+           250  60  9  0;...
+           300  70 14  0;...
+           400  85 19  2;...
+           350  80 15  1];
+ sizes  = [  2   5 10 50];
+ Cmass = counts2mass(counts,sizes,'ParticleDensity',5.26);
+```
+The output `Cmass` is the same size as the input `counts`.
 
 ---
 ### normconc.m
@@ -89,4 +112,5 @@ load diameters.mat
 The `diameters_microns` variable is a vector of particle diameter sizes in units of micrometers. The `diameters_phi` variable contains the same particle diameter sizes as `diameters_microns` but expressed in terms of the phi scale.
 
 ### References
+
 <small> Wentworth, C.K., 1922. A scale of grade and class terms for clastic sediments. *The Journal of Geology* **30**, 377-392.  </small>

@@ -1,10 +1,11 @@
-## MATLAB Particle Size Functions
-<large> Copyright 2024 - Austin M. Weber </large> 
+## 👨‍💻 MATLAB Particle Size Functions
+Copyright 2026 - Austin M. Weber
 
-### Description
-This repository contains 6 files (5 functions written for MATLAB and 1 binary file) for calculating particle mass concentrations in snow, evaluating log-normal particle concentrations, converting particle diameters sizes in metric units to phi "φ" units (and vice versa), and classifying particles sizes according to the Wentworth Scale (Wentworth, 1922).
+## 👋 About
+This repository contains MATLAB files for calculating particle mass concentrations in snow, evaluating lognormal particle concentrations, fitting lognormal curves to size distribution data, converting particle diameters sizes in metric units to phi "φ" units (and vice versa), and classifying particles sizes according to the Wentworth Scale ([Wentworth, 1922](https://www.jstor.org/stable/30063207)).
 
----
+## 📖 Documentation
+
 ### counts2mass.m
 Particle concentration to mass concentration.
 
@@ -28,8 +29,45 @@ counts  = [500 100 20  1;...
 The output `Cmass` is the same size as the input `counts`.
 
 ---
+### fitDistribution.m
+Lognormal PDF for visualization (requires Statistics and Machine Learning Toolbox)
+
+**Syntax**
+* `fitDistribution(data)`
+* `fitDistribution(data, type)`
+* `[x,y,H,L,R2] = fitDistribution(data)`
+
+where
+* `data` is a numeric vector.
+* `type` (optional) is a `char` vector specifying distribution type (default: `'Lognormal'`)
+* `x` is a numeric vector of x-axis data (for plotting)
+* `y` is a numeric vector for the probability density function (for plotting)
+* `H` (optional output) is an axis handle; specifying will generate a histogram object
+* `L` (optional output) is a handle to the fit line; specifying will generate a histogram object
+* `R2` (optional output) is the approximate R^2 value for the fit line; specifying will generate a histogram object
+
+**Example**
+```matlab
+shapes = readtable('particle_morphologies.xlsx');
+[x,y] = fitDistribution(shapes.ParticleDiameter);
+histogram(shapes.Diameter, 'Normalization', 'pdf');
+hold on
+  plot(x,y)
+hold off
+```
+
+** Alternative distribution types:
+```
+'Beta' | 'Binomial' | 'Exponential' | 'Gamma' | 'Half Normal' |
+'InverseGaussian' | 'Logistic' | 'Lognormal' [default] | 'Normal' | 
+'Poisson' | 'Rayleigh' | 'Rician' | 'Weibull'
+```
+
+For full list of distribution names, see: [fitdist.m](https://www.mathworks.com/help/releases/R2024b/stats/fitdist.html?searchPort=53887#btu538h-distname)
+
+---
 ### normconc.m
-Log-normalized particle concentration.
+Log-normalized particle concentrations.
 
 **Description** - Calculates `dN/dlogDp` or `dV/dlogDp`, which are the normalized concentrations or normalized volumes of particles based on the diameter size channels of the particles. The function performs the following calculation:
 

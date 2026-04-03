@@ -4,7 +4,7 @@ function [x,y,H,L,R2] = fitDistribution(data,type)
 %Syntax
 % fitDistribution(data)
 % fitDistribution(data,type)
-% [x,y,H,L] = fitDistribution(data)
+% [x,y,H,L,R2] = fitDistribution(data)
 %
 % where 
 %  * `data` is a numeric vector

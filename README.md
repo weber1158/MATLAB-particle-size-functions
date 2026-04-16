@@ -128,7 +128,7 @@ If the metric unit is not specified, the function will convert from φ units to 
 ### grainsizeterm.m
 Wentworth Scale grain size classification
 
-**Description** The `grainsizeterm()` function classifies a vector of particle diameters (in phi units) to their corresponding morphological categories based on the Wentworth Scale. For example:
+**Description** - The `grainsizeterm()` function classifies a vector of particle diameters (in phi units) to their corresponding morphological categories based on the Wentworth Scale. For example:
 
 ```matlab
 phis = [1 3 10];
@@ -139,6 +139,33 @@ terms =
         Coarse sand    Fine sand    Clay
 
 ```
+
+---
+### stokes.m
+Stokes Law
+
+**Description** - Calculate the settling velocity of an idealized spherical particle.
+
+Stokes Law is defined as:
+```
+V_p = (2*radius^2*(rho_p - rho_f)*g) / (9*mu_f)
+```
+where `p` refers to the particle, `f` refers to the fluid, `rho` is density, and `mu` is dynamic viscosity.
+
+**Syntax:**
+```
+V_p = stokes(r_p,rho_p,rho_f,mu_f)
+```
+
+**Inputs:**
+* `r_p` --> Radius of the particle (in meters)
+* `rho_p` --> Density of the particle (in kg/m^3)
+* `rho_f` --> Density of the fluid medium (in kg/m^3)
+* `mu_f` --> Dynamic viscosity of the fluid medium (in Pa/s)
+
+**Output:**
+* `V_p` --> Settling velocity of the particle (in m/s)
+
 ---
 ### diameters.mat
 MATLAB binary file containing two variables: `diameters_microns` and `diameters_phi`. You can load the variables into MATLAB with the `load()` function:

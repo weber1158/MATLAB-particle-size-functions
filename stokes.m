@@ -14,7 +14,7 @@ function V_p = stokes(r_p,rho_p,rho_f,mu_f)
 
 % Copyright 2026 Austin M. Weber
 
-settling_veloctity = @(r,dp,df,mf) (2 .* r.^2 .* (dp - df) .* 9.81) ./ (9 .* mf);
+settling_velocity = @(r,dp,df,mf) (2 .* r.^2 .* (dp - df) .* 9.81) ./ (9 .* mf);
 
 V_p = settling_velocity(r_p, rho_p, rho_f, mu_f);
 
